@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
-const contactsSchema = Joi.object({
-    name: Joi.string().alphanum().min(3).max(30).required(),
+const joiSchema = Joi.object({
+    name: Joi.string().min(3).max(30).required(),
     email: Joi.string()
         .email({
             minDomainSegments: 2,
@@ -14,6 +14,7 @@ const contactsSchema = Joi.object({
             "string.pattern.base": `Phone number must have 10 digits.`,
         })
         .required(),
+    favorite: Joi.boolean(),
 });
 
-module.exports = contactsSchema;
+module.exports = joiSchema;

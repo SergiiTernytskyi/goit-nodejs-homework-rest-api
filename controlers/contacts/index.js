@@ -1,8 +1,9 @@
 const getAll = require("./getAll");
-const getById = require("./getById.js");
+const getById = require("./getById");
 const add = require("./add");
-const remove = require("./remove");
 const update = require("./update");
+const remove = require("./remove");
+const updateStatusContact = require("./updateFavorite");
 
 const ctrlWrapper = require("../../helpers/ctrlWrapper");
 
@@ -10,6 +11,7 @@ module.exports = {
     getAll: ctrlWrapper(getAll),
     getById: ctrlWrapper(getById),
     add: ctrlWrapper(add),
-    remove: ctrlWrapper(remove),
     update: ctrlWrapper(update),
+    remove: ctrlWrapper(remove),
+    updateStatusContact: ctrlWrapper(updateStatusContact),
 };

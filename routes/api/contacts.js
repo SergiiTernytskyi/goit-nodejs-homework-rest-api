@@ -2,18 +2,19 @@ const express = require("express");
 
 const { contacts: contactsCtrl } = require("../../controlers");
 const { contactsValidation } = require("../../midlewares");
-const { contactsSchema } = require("../../schemas");
+const { joiSchema, joiStatusSchema } = require("../../helpers/joiSchemas");
 
 const router = express.Router();
 
 router.get("/", contactsCtrl.getAll);
 router.get("/:contactId", contactsCtrl.getById);
-router.post("/", contactsValidation(contactsSchema), contactsCtrl.add);
+router.post("/", contactsValidation(joiSchema), contactsCtrl.add);
+router.put("/:contactId", contactsValidation(joiSchema), contactsCtrl.update);
 router.delete("/:contactId", contactsCtrl.remove);
-router.put(
-    "/:contactId",
-    contactsValidation(contactsSchema),
-    contactsCtrl.update
+router.patch(
+    "/:contactId/favorite",
+    contactsValidation(joiStatusSchema),
+    contactsCtrl.updateStatusContact
 );
 
 module.exports = router;
