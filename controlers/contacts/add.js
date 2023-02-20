@@ -6,6 +6,7 @@ const add = async (req, res) => {
     const result = await addContact(body);
 
     res.status(201).json({
+        status: 201,
         message: "success",
         data: { contact: result },
     });
