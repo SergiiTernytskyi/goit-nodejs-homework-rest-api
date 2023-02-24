@@ -1,6 +1,8 @@
 const { NotFound, BadRequest } = require("http-errors");
 
-const { updateContactById } = require("../../service");
+const {
+    contacts: { updateContactById },
+} = require("../../service");
 
 const updateStatusContact = async (req, res) => {
     const { contactId } = req.params;

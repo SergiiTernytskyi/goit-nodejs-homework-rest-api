@@ -1,4 +1,6 @@
-const { addContact } = require("../../service");
+const {
+    contacts: { addContact },
+} = require("../../service");
 
 const add = async (req, res) => {
     const { body } = req;

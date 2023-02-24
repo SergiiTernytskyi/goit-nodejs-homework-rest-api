@@ -1,6 +1,8 @@
 const { NotFound } = require("http-errors");
 
-const { removeContactById } = require("../../service");
+const {
+    contacts: { removeContactById },
+} = require("../../service");
 
 const remove = async (req, res) => {
     const { contactId } = req.params;

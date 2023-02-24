@@ -1,5 +1,8 @@
 const { NotFound } = require("http-errors");
-const { getContactsById } = require("../../service");
+
+const {
+    contacts: { getContactsById },
+} = require("../../service");
 
 const getById = async (req, res) => {
     const { contactId } = req.params;
