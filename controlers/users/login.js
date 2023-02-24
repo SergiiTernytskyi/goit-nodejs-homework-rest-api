@@ -21,9 +21,11 @@ const login = async (req, res) => {
         status: 200,
         message: "success",
         token,
-        user: {
-            email: "example@example.com",
-            subscription: "starter",
+        data: {
+            user: {
+                email: "example@example.com",
+                subscription: "starter",
+            },
         },
     });
 };

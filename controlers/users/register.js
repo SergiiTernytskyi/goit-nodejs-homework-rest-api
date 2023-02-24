@@ -22,9 +22,11 @@ const register = async (req, res, next) => {
         res.status(201).json({
             status: 201,
             message: "success",
-            user: {
-                email: newUser.email,
-                subscription: "starter",
+            data: {
+                user: {
+                    email: newUser.email,
+                    subscription: "starter",
+                },
             },
         });
     } catch (error) {

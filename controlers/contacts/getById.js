@@ -6,7 +6,8 @@ const {
 
 const getById = async (req, res) => {
     const { contactId } = req.params;
-    const result = await getContactsById(contactId);
+    const { _id: userId } = req.user;
+    const result = await getContactsById(contactId, userId);
 
     if (!result) {
         throw NotFound("Not found");
