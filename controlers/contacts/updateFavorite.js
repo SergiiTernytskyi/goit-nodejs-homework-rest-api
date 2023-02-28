@@ -1,16 +1,19 @@
 const { NotFound, BadRequest } = require("http-errors");
 
-const { updateContactById } = require("../../service");
+const {
+    contacts: { updateContactById },
+} = require("../../service");
 
 const updateStatusContact = async (req, res) => {
     const { contactId } = req.params;
     const { favorite } = req.body;
+    const { _id: userId } = req.user;
 
     if (!favorite) {
         throw BadRequest("Favorite field is required");
     }
 
-    const result = await updateContactById(contactId, { favorite });
+    const result = await updateContactById(contactId, { favorite }, userId);
 
     if (!result) {
         throw NotFound("Not found");

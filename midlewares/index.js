@@ -1,4 +1,5 @@
-const contactsValidation = require("./validation");
+const validation = require("./validation");
 const isValidId = require("./isValidId");
+const auth = require("./auth");
 
-module.exports = { contactsValidation, isValidId };
+module.exports = { validation, isValidId, auth };
