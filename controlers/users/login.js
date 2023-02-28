@@ -1,5 +1,5 @@
 const { Unauthorized } = require("http-errors");
-const tokenCreate = require("../../helpers/tokenCreate");
+const { tokenCreate } = require("../../helpers");
 
 const {
     users: { getUserByEmail, updateUsersToken },

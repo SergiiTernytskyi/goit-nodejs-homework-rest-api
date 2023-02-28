@@ -4,7 +4,7 @@ const logout = require("./logout");
 const getCurrent = require("./getCurrent");
 const updateSubscription = require("./updateSubscription");
 
-const ctrlWrapper = require("../../helpers/ctrlWrapper");
+const { ctrlWrapper } = require("../../helpers");
 
 module.exports = {
     register: ctrlWrapper(register),

@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
+
+const { handleMongooseError } = require("../helpers");
 
 const userSchema = new Schema(
     {
@@ -17,17 +19,26 @@ const userSchema = new Schema(
             enum: ["starter", "pro", "business"],
             default: "starter",
         },
-        token: String,
+        token: {
+            type: String,
+            default: null,
+        },
+        avatarURL: {
+            type: String,
+            required: true,
+        },
     },
     { versionKey: false, timestamps: true }
 );
 
-userSchema.methods.setPassword = function (password) {
-    this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+userSchema.post("save", handleMongooseError);
+
+userSchema.methods.setPassword = async function (password) {
+    this.password = await bcrypt.hashSync(password, 10);
 };
 
-userSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
+userSchema.methods.validPassword = async function (password) {
+    return await bcrypt.compareSync(password, this.password);
 };
 
 const User = model("user", userSchema);
