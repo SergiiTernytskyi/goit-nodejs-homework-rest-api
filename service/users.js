@@ -13,13 +13,9 @@ const getUserById = async (id) => {
 };
 
 const updateUserById = async (id, update) => {
-    return User.findByIdAndUpdate(
-        id,
-        { subscription: update },
-        {
-            new: true,
-        }
-    );
+    return User.findByIdAndUpdate(id, update, {
+        new: true,
+    });
 };
 
 module.exports = {

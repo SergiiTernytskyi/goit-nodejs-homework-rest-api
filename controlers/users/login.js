@@ -20,11 +20,11 @@ const login = async (req, res) => {
     res.status(200).json({
         status: 200,
         message: "success",
-        token,
         data: {
             user: {
                 email: "example@example.com",
                 subscription: "starter",
+                token,
             },
         },
     });
