@@ -22,8 +22,8 @@ const login = async (req, res) => {
         message: "success",
         data: {
             user: {
-                email: "example@example.com",
-                subscription: "starter",
+                email,
+                subscription: user.subscription,
                 token,
             },
         },
