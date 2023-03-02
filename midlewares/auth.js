@@ -20,7 +20,7 @@ const auth = async (req, res, next) => {
 
         const user = await getUserById(id);
 
-        if (!user || !user.token) {
+        if (!user || !user.token || user.token !== token) {
             throw new Unauthorized("Not authorized");
         }
         req.user = user;
