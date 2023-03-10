@@ -8,7 +8,7 @@ const updateSubscription = async (req, res) => {
     const { _id: userId } = req.user;
     const { subscription } = req.body;
 
-    const result = await updateUserById(userId, subscription);
+    const result = await updateUserById(userId, { subscription });
 
     if (!result) {
         throw NotFound("Not found");
@@ -17,7 +17,7 @@ const updateSubscription = async (req, res) => {
     res.status(200).json({
         status: 200,
         message: "user subscription updated",
-        data: { user: result },
+        data: { subscription: result.subscription },
     });
 };
 

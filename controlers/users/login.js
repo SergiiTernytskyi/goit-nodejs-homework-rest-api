@@ -1,5 +1,5 @@
 const { Unauthorized } = require("http-errors");
-const tokenCreate = require("../../helpers/tokenCreate");
+const { tokenCreate } = require("../../helpers");
 
 const {
     users: { getUserByEmail, updateUsersToken },
@@ -20,11 +20,11 @@ const login = async (req, res) => {
     res.status(200).json({
         status: 200,
         message: "success",
-        token,
         data: {
             user: {
-                email: "example@example.com",
-                subscription: "starter",
+                email,
+                subscription: user.subscription,
+                token,
             },
         },
     });
