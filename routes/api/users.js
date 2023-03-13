@@ -5,6 +5,7 @@ const { auth, validation, upload } = require("../../midlewares");
 const {
     joiRegisterSchema,
     joiSubscriptionSchema,
+    joiEmailValidateSchema,
 } = require("../../helpers/joiSchemas");
 
 const router = express.Router();
@@ -20,5 +21,11 @@ router.patch(
     usersCtrl.updateSubscription
 );
 router.patch("/avatar", auth, upload.single("image"), usersCtrl.updateAvatar);
+router.get("/verify/:verificationToken", usersCtrl.verificateEmail);
+router.post(
+    "/verify",
+    validation(joiEmailValidateSchema),
+    usersCtrl.resendEmail
+);
 
 module.exports = router;
