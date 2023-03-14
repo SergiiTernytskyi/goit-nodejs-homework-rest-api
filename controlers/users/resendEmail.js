@@ -1,7 +1,9 @@
 const { v4: uuidv4 } = require("uuid");
 const { BadRequest } = require("http-errors");
 
-const { sendMail } = require("../../helpers/");
+const {
+    email: { sendMail },
+} = require("../../service");
 
 const {
     users: { updateUserByEmail, getUserByEmail },

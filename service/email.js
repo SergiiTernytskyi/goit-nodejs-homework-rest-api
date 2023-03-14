@@ -28,4 +28,4 @@ const sendMail = async (email, verificationToken) => {
     }
 };
 
-module.exports = sendMail;
+module.exports = { sendMail };

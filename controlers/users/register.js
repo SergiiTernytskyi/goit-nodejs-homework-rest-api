@@ -3,7 +3,10 @@ const gravatar = require("gravatar");
 const { v4: uuidv4 } = require("uuid");
 
 const { User } = require("../../models");
-const { sendMail } = require("../../helpers/");
+
+const {
+    email: { sendMail },
+} = require("../../service");
 
 const {
     users: { getUserByEmail },
